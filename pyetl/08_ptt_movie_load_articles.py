@@ -28,12 +28,6 @@ for i in range(0, 5):
         if title_tag.select_one('a'):
             title_name = title_tag.select_one('a').text
             article_url = "https://www.ptt.cc" + title_tag.select_one('a')["href"]
-            """
-            1. request article page
-            2. beautifulsoup obj
-            3. select article part
-            4. load article text
-            """
             try:
                 load_article(
                     article_url=article_url,

@@ -7,6 +7,12 @@ headers = {
 
 
 def load_article(article_url: str, load_path: str):
+    """
+    1. request article page
+    2. beautifulsoup obj
+    3. select article part
+    4. load article text
+    """
     res = requests.get(article_url, headers=headers)
     soup = BeautifulSoup(res.text, "html.parser")
     article_tag = soup.select_one('div[id="main-content"]')
