@@ -7,7 +7,8 @@ headers = {
 
 url = "https://www.w3schools.com/action_page.php"
 
-data_str = """_hid_0: 564328
+data_str = """
+_hid_0: 564328
 _hid_1: 352167
 _hid_2: 57483
 1A: Apple
@@ -15,9 +16,10 @@ _hid_2: 57483
 cars: volvo
 subject1: Car Loan
 subject2: dfghj
-subject3: 45645645645646"""
+subject3: 45645645645646
+"""
 
-data = {row.split(": ")[0]: row.split(": ")[1] for row in data_str.split("\n")}
+data = {row.split(": ")[0]: row.split(": ")[1] for row in data_str.split("\n") if row != ""}
 
 # data = {}
 # for row in data_str.split("\n"):
