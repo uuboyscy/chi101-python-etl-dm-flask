@@ -1,7 +1,14 @@
+import os
+
 import requests
 from bs4 import BeautifulSoup
 
 from load_article_tool import load_article
+
+
+load_folder = "articles"
+if not os.path.exists(f"./{load_folder}"):
+    os.mkdir(f"./{load_folder}")
 
 url = "https://www.ptt.cc/bbs/movie/index.html"
 headers = {
@@ -27,7 +34,18 @@ for i in range(0, 5):
             3. select article part
             4. load article text
             """
-            load_article(article_url=article_url)
+            try:
+                load_article(
+                    article_url=article_url,
+                    load_path=f"./{load_folder}/{title_name}.txt",
+                )
+            except FileNotFoundError:
+                load_article(
+                    article_url=article_url,
+                    load_path=f"./{load_folder}/{title_name.replace('/', '-')}.txt",
+                )
+            except OSError:
+                pass
             print(title_name)
             print(article_url)
         else:
