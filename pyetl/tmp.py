@@ -15,3 +15,8 @@ print(soup.select('a[class="btn wide"]'))
 print(
     "https://www.ptt.cc" + soup.select('a[class="btn wide"]')[1]["href"]
 )
+
+
+
+a = []
+a.sort()
