@@ -17,7 +17,9 @@ res = requests.get(url, headers=headers)
 
 # pprint.pprint(res.json())
 
-for article_obj in res.json()["data"]["newsList"]:
+json_data = res.json()
+
+for article_obj in json_data["data"]["newsList"]:
     post_title = article_obj["postTitle"]
     post_url = "https://www.nownews.com" + article_obj["postUrl"]
     image_url = article_obj["imageUrl"]
