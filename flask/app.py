@@ -57,5 +57,23 @@ def hello_get():
     return output_html
 
 
+@app.route("/hello_post", methods=["GET", "POST"])
+def hello_post():
+    output_html = """
+        <form action="/hello_post" method="POST">
+            <label>What's your name?</label>
+            <input name="username">
+            <button type="submit">SUBMIT</button>
+        </form>
+    """
+
+    request_method = request.method
+    if request_method == "POST":
+        username = request.form.get("username")
+        output_html += "<h1>Hello {}.</h1>".format(username)
+
+    return output_html
+
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5001)
