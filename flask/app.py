@@ -23,8 +23,8 @@ def get_names(department_id, team_id):
     sql = """
         SELECT emp_name, emp_id FROM emp
         WHERE department_id = '{}'
-        AND team_id = '{}';
-    """
+        AND team_id = {};
+    """.format(department_id, team_id)
     return sql
 
 
